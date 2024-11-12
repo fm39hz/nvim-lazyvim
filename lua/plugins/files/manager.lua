@@ -14,9 +14,9 @@ return {
 			-- the transparency of the yazi floating window (0-100). See :h winblend
 			yazi_floating_window_winblend = 25,
 			keymaps = {
-				open_file_in_vertical_split = "J",
-				open_file_in_horizontal_split = "K",
-				open_file_in_tab = "L",
+				-- open_file_in_vertical_split = "J",
+				-- open_file_in_horizontal_split = "K",
+				-- open_file_in_tab = "L",
 			},
 		},
 		keys = {
