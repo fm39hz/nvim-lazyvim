@@ -13,12 +13,12 @@ return {
 			},
 		},
 	},
-	{
-		"rcarriga/nvim-notify",
-		opts = {
-			timeout = 2500,
-			fps = 170,
-			stages = "fade_in_slide_out",
-		},
-	},
+	-- {
+	-- 	"rcarriga/nvim-notify",
+	-- 	opts = {
+	-- 		timeout = 2500,
+	-- 		fps = 170,
+	-- 		stages = "fade_in_slide_out",
+	-- 	},
+	-- },
 }
