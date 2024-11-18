@@ -42,3 +42,11 @@ vim.api.nvim_create_autocmd("User", {
 		vim.cmd.wshada({ bang = true })
 	end,
 })
+
+vim.api.nvim_create_autocmd({ "VimEnter", "VimLeave" }, {
+	callback = function()
+		if vim.env.TMUX_PLUGIN_MANAGER_PATH then
+			vim.uv.spawn(vim.env.TMUX_PLUGIN_MANAGER_PATH .. "/tmux-window-name/scripts/rename_session_windows.py", {})
+		end
+	end,
+})
