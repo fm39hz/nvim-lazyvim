@@ -2,7 +2,9 @@ return {
 	{
 		"ck-zhang/mistake.nvim",
 		lazy = true,
-		event = "BufReadPre",
+		ft = {
+			"markdown",
+		},
 	},
 	{
 		"ravibrock/spellwarn.nvim",
