@@ -90,7 +90,7 @@
   "omnisharp-extended-lsp.nvim": { "branch": "main", "commit": "4916fa12e5b28d21a1f031f0bdd10aa15a75d85d" },
   "one-small-step-for-vimkind": { "branch": "main", "commit": "5d2edc8937978585881d97a8fec4c2903fa4d72c" },
   "otter.nvim": { "branch": "main", "commit": "e8c662e1aefa8b483cfba6e00729a39a363dcecc" },
-  "outline.nvim": { "branch": "main", "commit": "ffde729b63d4555bd4133388a72a6ab95cc0df77" },
+  "outline.nvim": { "branch": "main", "commit": "0d057fa78073a18c021929d1db5c7bdb315c8f3a" },
   "overseer.nvim": { "branch": "master", "commit": "10ee48ff96c8d1049efb278ea4c8cf9f3b0e4326" },
   "pathlib.nvim": { "branch": "main", "commit": "57e5598af6fe253761c1b48e0b59b7cd6699e2c1" },
   "persistence.nvim": { "branch": "main", "commit": "f6aad7dde7fcf54148ccfc5f622c6d5badd0cc3d" },
