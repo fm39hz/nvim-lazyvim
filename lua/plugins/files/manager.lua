@@ -9,8 +9,7 @@ return {
 		"mikavilpas/yazi.nvim",
 		event = "VeryLazy",
 		opts = {
-			floating_window_scaling_factor = 0.5,
-
+			floating_window_scaling_factor = 0.75,
 			-- the transparency of the yazi floating window (0-100). See :h winblend
 			yazi_floating_window_winblend = 25,
 			keymaps = {
