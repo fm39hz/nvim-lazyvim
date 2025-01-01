@@ -14,12 +14,12 @@ return {
 			},
 		},
 	},
-	{
-		"nvim-neorg/neorg",
-		dependencies = { "luarocks.nvim" },
-		ft = { "norg" },
-		version = "*",
-	},
+	-- {
+	-- 	"nvim-neorg/neorg",
+	-- 	-- dependencies = { "luarocks.nvim" },
+	-- 	ft = { "norg" },
+	-- 	version = "*",
+	-- },
 	{
 		"jmbuhr/otter.nvim",
 		ft = "markdown",

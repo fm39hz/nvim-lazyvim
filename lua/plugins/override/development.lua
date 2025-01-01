@@ -1,4 +1,3 @@
-require("dap.ext.vscode").load_launchjs()
 return {
 	{
 		"hrsh7th/nvim-cmp",
