@@ -21,6 +21,7 @@
   "dressing.nvim": { "branch": "master", "commit": "56ef6a969a4990d938c5fed40c370f65e125fc97" },
   "edgy.nvim": { "branch": "main", "commit": "7e8dedc39abebe40c289b8012cc89b11c69aa7a0" },
   "everforest-nvim": { "branch": "main", "commit": "616864c0c534b1eaf650ef913512dcde80ababfb" },
+  "ex-colors.nvim": { "branch": "main", "commit": "524b4f32eaf18a06cd579a74f19eea8a8358eb09" },
   "flit.nvim": { "branch": "main", "commit": "1ef72de6a02458d31b10039372c8a15ab8989e0d" },
   "friendly-snippets": { "branch": "main", "commit": "efff286dd74c22f731cdec26a70b46e5b203c619" },
   "fzf-lua": { "branch": "main", "commit": "394ddb2b80c58731c09b5775ca5d05d578b1de3d" },

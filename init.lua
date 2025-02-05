@@ -1,5 +1,5 @@
 require("config.lazy")
-
+vim.cmd("colorscheme ex-everforest")
 if vim.g.neovide then
 	vim.o.guifont = "JetBrainsMono Nerd Font:h15.4:b"
 	vim.opt.linespace = -4
