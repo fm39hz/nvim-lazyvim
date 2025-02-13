@@ -1,25 +1,11 @@
 return {
 	{
-		"epwalsh/obsidian.nvim",
+		"7sedam7/perec.nvim",
 		ft = "markdown",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
 		opts = {
-			workspaces = {
-				{
-					name = "Project Pillar",
-					path = "~/.vault/Rouge Pillar/",
-				},
-			},
+			cwd = vim.fn.getcwd(),
 		},
 	},
-	-- {
-	-- 	"nvim-neorg/neorg",
-	-- 	-- dependencies = { "luarocks.nvim" },
-	-- 	ft = { "norg" },
-	-- 	version = "*",
-	-- },
 	{
 		"jmbuhr/otter.nvim",
 		ft = "markdown",
