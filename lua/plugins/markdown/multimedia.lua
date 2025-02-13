@@ -14,7 +14,7 @@ return {
 				enabled = true,
 			},
 			editor_only_render_when_focused = true,
-			window_overlap_clear_enabled = true, -- auto show/hide images when the editor gains/looses focus
+			window_overlap_clear_enabled = true,
 			tmux_show_only_in_active_window = true,
 		},
 	},

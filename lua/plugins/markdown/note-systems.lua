@@ -10,7 +10,6 @@ return {
 		"jmbuhr/otter.nvim",
 		ft = "markdown",
 		dependencies = {
-			"hrsh7th/nvim-cmp", -- optional, for completion
 			"neovim/nvim-lspconfig",
 			"nvim-treesitter/nvim-treesitter",
 		},
@@ -18,17 +17,21 @@ return {
 	{
 		"javiorfo/nvim-soil",
 		dependencies = { "javiorfo/nvim-nyctophilia" },
-
 		lazy = true,
 		ft = "plantuml",
 		opts = {
-			-- puml_jar = "/path/to/plantuml.jar",
-
 			image = {
-				darkmode = false, -- Enable or disable darkmode
-				format = "png", -- Choose between png or svg
+				darkmode = false,
+				format = "png",
 				execute_to_open = function(img)
-					return "kitten icat" .. img
+					local modified_img = img:gsub("%.g%.png", ".png")
+					Snacks.win({
+						file = modified_img,
+						border = "rounded",
+						width = 0.7,
+						height = 0.7,
+					})
+					Snacks.notifier.hide()
 				end,
 			},
 		},
