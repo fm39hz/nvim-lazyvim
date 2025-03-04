@@ -1,13 +1,16 @@
 return {
 	{
-		"hrsh7th/nvim-cmp",
+		"Saghen/blink.cmp",
 		opts = {
-			window = {
-				documentation = {
-					border = "rounded",
-				},
-				completion = {
-					border = "rounded",
+			keymap = {
+				preset = "super-tab",
+			},
+			signature = { window = { border = "rounded" } },
+			completion = {
+				menu = { border = "rounded" },
+				documentation = { window = { border = "rounded" } },
+				trigger = {
+					show_on_insert_on_trigger_character = false,
 				},
 			},
 		},
