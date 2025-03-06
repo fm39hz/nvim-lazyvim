@@ -24,14 +24,7 @@ return {
 				darkmode = false,
 				format = "png",
 				execute_to_open = function(img)
-					local modified_img = img:gsub("%.g%.png", ".png")
-					Snacks.win({
-						file = modified_img,
-						border = "rounded",
-						width = 0.7,
-						height = 0.7,
-					})
-					Snacks.notifier.hide()
+					return "nsxiv -b " .. img
 				end,
 			},
 		},
