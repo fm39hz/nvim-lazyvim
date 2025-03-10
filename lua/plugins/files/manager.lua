@@ -11,7 +11,7 @@ return {
 		opts = {
 			floating_window_scaling_factor = 0.75,
 			-- the transparency of the yazi floating window (0-100). See :h winblend
-			yazi_floating_window_winblend = 25,
+			yazi_floating_window_winblend = 0,
 			keymaps = {
 				-- open_file_in_vertical_split = "J",
 				-- open_file_in_horizontal_split = "K",

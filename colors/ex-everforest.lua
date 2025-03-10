@@ -157,7 +157,7 @@ vim.api.nvim_set_hl(
 vim.api.nvim_set_hl(0, "Exception", { cterm = { italic = true }, fg = 15105664, italic = true })
 vim.api.nvim_set_hl(0, "Fg", { fg = 13878954 })
 vim.api.nvim_set_hl(0, "Float", { fg = 14064054 })
-vim.api.nvim_set_hl(0, "FloatBorder", { bg = 4016205, fg = 8753801 })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = 2962747, fg = 8753801 })
 vim.api.nvim_set_hl(0, "FloatTitle", { bg = 4016205, bold = true, cterm = { bold = true }, fg = 8753801 })
 vim.api.nvim_set_hl(0, "FoldColumn", { fg = 5661535 })
 vim.api.nvim_set_hl(0, "Folded", { bg = 3424068, fg = 8753801 })
