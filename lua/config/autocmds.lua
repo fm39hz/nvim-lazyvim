@@ -65,3 +65,20 @@ vim.api.nvim_create_autocmd("User", {
 		vim.b.copilot_suggestion_hidden = false
 	end,
 })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = augroup,
+			buffer = args.buf,
+			callback = function()
+				vim.lsp.buf.format({ timeout = 1000, async = false })
+
+				if vim.bo[0].filetype == "cs" then
+					require("csharp").fix_usings()
+				end
+			end,
+		})
+	end,
+})
