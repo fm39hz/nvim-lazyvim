@@ -40,6 +40,8 @@ return {
 			image = {
 				force = true,
 			},
+			quickfile = {},
+			scroll = {},
 			dashboard = {
 				preset = {
 					header = logo,
