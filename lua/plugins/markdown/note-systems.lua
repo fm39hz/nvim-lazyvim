@@ -1,9 +1,32 @@
 return {
 	{
-		"7sedam7/perec.nvim",
+		"obsidian-nvim/obsidian.nvim",
+		event = "BufReadPre " .. vim.fn.expand("~") .. "/Workspace/Notes/Obsidian/*/*.md",
 		ft = "markdown",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
 		opts = {
-			cwd = vim.fn.getcwd(),
+			workspaces = {
+				{
+					name = "samsara",
+					path = "~/Workspace/Notes/Obsidian/ProjectSamsara",
+				},
+			},
+			notes_subdir = "notes",
+			daily_notes = {
+				folder = "notes/dailies",
+				date_format = "%Y-%m-%d",
+				alias_format = "%B %-d, %Y",
+				default_tags = { "daily-notes" },
+				template = nil,
+				workdays_only = true,
+			},
+			completion = {
+				nvim_cmp = false,
+				blink = true,
+				min_chars = 2,
+			},
 		},
 	},
 	{
