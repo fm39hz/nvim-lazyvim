@@ -20,12 +20,12 @@ local function createLogo(withBorder)
 
 	if withBorder then
 		local result =
-		"╭─────────────────────────────────────────────────────────────────────────────────────────╮\n"
+			"╭─────────────────────────────────────────────────────────────────────────────────────────╮\n"
 		for _, line in ipairs(lines) do
 			result = result .. "│" .. line .. "│\n"
 		end
 		result = result
-				.. "╰─────────────────────────────────────────────────────────────────────────────────────────╯"
+			.. "╰─────────────────────────────────────────────────────────────────────────────────────────╯"
 		return result
 	else
 		return table.concat(lines, "\n")
@@ -42,6 +42,8 @@ return {
 			},
 			quickfile = {},
 			scroll = {},
+			statuscolumn = {},
+			words = {},
 			dashboard = {
 				preset = {
 					header = logo,
