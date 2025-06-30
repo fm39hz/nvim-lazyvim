@@ -129,9 +129,9 @@ return {
 	{
 		"Saghen/blink.cmp",
 		opts = {
-			keymap = {
-				preset = "super-tab",
-			},
+			-- keymap = {
+			-- 	preset = "super-tab",
+			-- },
 			signature = { window = { border = "rounded" } },
 			completion = {
 				menu = { border = "rounded" },
@@ -147,6 +147,16 @@ return {
 		opts = {
 			servers = {
 				omnisharp = {
+					cmd = {
+						"OmniSharp",
+						"-z",
+						"--hostPID",
+						tostring(vim.fn.getpid()),
+						"DotNet:enablePackageRestore=false",
+						"--encoding",
+						"utf-8",
+						"--languageserver",
+					},
 					enable_editor_config_support = true,
 					settings = {
 						EnableEditorConfigSupport = true,
@@ -213,17 +223,17 @@ return {
 			layouts = {
 				{
 					elements = {
-						{ id = "watches", size = 0.24 },
-						{ id = "scopes", size = 0.24 },
+						{ id = "watches",     size = 0.24 },
+						{ id = "scopes",      size = 0.24 },
 						{ id = "breakpoints", size = 0.24 },
-						{ id = "stacks", size = 0.28 },
+						{ id = "stacks",      size = 0.28 },
 					},
 					size = 0.23,
 					position = "right",
 				},
 				{
 					elements = {
-						{ id = "repl", size = 0.55 },
+						{ id = "repl",    size = 0.55 },
 						{ id = "console", size = 0.45 },
 					},
 					size = 0.27,
