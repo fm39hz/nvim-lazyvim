@@ -51,3 +51,6 @@ map("n", "<F6>", "<CMD>CompilerOpen<CR>", { desc = "Open compiler" })
 map("n", "<S-F6>", "<CMD>CompilerRedo<CR>", { desc = "Compiler redo" })
 map("n", "<S-F7>", "<CMD>CompilerToggleResults<CR>", { desc = "Compiler results" })
 map("n", "<leader>ci", "<CMD>Telescope import<CR>", { desc = "Import modules" })
+
+-- AI
+map("n", "<leader>cp", "<cmd>ClaudeCode<CR>", { desc = "Toggle Claude Code Panel" })
