@@ -13,5 +13,11 @@ vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to de
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
+-- shell
+vim.opt.shell = "fish"
+vim.opt.shellcmdflag = "-c"
+vim.opt.shellquote = ""
+vim.opt.shellxquote = ""
+
 -- lsp config
 vim.lsp.set_log_level("off")
