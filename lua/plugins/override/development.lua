@@ -192,40 +192,65 @@ return {
 	},
 	{
 		"mfussenegger/nvim-dap",
-		opts = {
-			adapters = {
-				coreclr = {
-					type = "executable",
-					command = vim.fn.exepath("netcoredbg") or "/home/fm39hz/.local/share/nvim/mason/bin/netcoredbg",
-					args = {
-						"--interpreter=vscode",
-						"--",
-						os.getenv("GODOT") or "/home/fm39hz/.config/godotenv/godot/bin/godot",
-					},
-				},
-			},
-			configurations = {
-				cs = {
-					{
-						type = "coreclr",
-						request = "launch",
-						name = "Simple Editor Launch",
-						cwd = function()
-							local project_file, project_dir = find_godot_project()
-							Snacks.notifier.notify("cwd " .. project_dir, "info")
-							Snacks.notifier.notify("file " .. project_file, "info")
-							return project_dir
-						end,
-						env = get_env_vars(),
-						args = function()
-							local project_file, project_dir = find_godot_project()
-							Snacks.notifier.notify("cwd " .. project_dir, "info")
-							return { " --editor " .. project_file }
-						end,
-					},
-				},
-			},
-		},
+		init = function()
+			vim.api.nvim_create_autocmd("VimEnter", {
+				callback = function()
+					vim.schedule(function()
+						local dap = require("dap")
+
+						-- Path to your Godot executable
+						local godot_executable = os.getenv("GODOT") or "/home/fm39hz/.config/godotenv/godot/bin/godot"
+
+						-- IMPORTANT: Configure the adapter with Godot executable
+						dap.adapters.coreclr = {
+							type = "executable",
+							command = vim.fn.exepath("netcoredbg") or "/home/fm39hz/.local/share/nvim/mason/bin/netcoredbg",
+							args = {
+								"--interpreter=vscode",
+								"--",     -- This separator is crucial
+								godot_executable, -- This tells netcoredbg to launch Godot
+							},
+						}
+
+						-- Force add the configuration
+						if not dap.configurations.cs then
+							dap.configurations.cs = {}
+						end
+
+						-- Check if Godot config already exists
+						local godot_exists = false
+						for _, config in ipairs(dap.configurations.cs) do
+							if config.name == "Godot: Simple Editor Launch" then
+								godot_exists = true
+								break
+							end
+						end
+
+						if not godot_exists then
+							table.insert(dap.configurations.cs, {
+								type = "coreclr",
+								request = "launch",
+								name = "Godot: Simple Editor Launch",
+								-- No 'program' field needed - it's handled by the adapter
+								cwd = function()
+									local project_file, project_dir = find_godot_project()
+									Snacks.notifier.notify("cwd " .. project_dir, "info")
+									return project_dir
+								end,
+								env = get_env_vars(),
+								args = function()
+									local project_file, project_dir = find_godot_project()
+									-- Note: the working config has a space before --editor
+									return { "--editor", project_file }
+								end,
+							})
+
+							vim.notify("Godot DAP configuration added!", vim.log.levels.INFO)
+						end
+					end)
+				end,
+			})
+		end,
 	},
 	{
 		"rcarriga/nvim-dap-ui",
