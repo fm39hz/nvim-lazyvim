@@ -4,14 +4,33 @@
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		if not client then
+			return
+		end
+
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = augroup,
 			buffer = args.buf,
 			callback = function()
-				vim.lsp.buf.format({ timeout = 1000, async = false })
-				if vim.bo[0].filetype == "cs" then
+				-- Always format first
+				vim.lsp.buf.format({ timeout = 2000, async = false })
+
+				local filetype = vim.bo[args.buf].filetype
+
+				-- C# specific actions
+				if filetype == "cs" then
 					require("csharp").fix_usings()
+				end
+
+				-- TypeScript specific actions
+				if vim.tbl_contains({ "typescript", "typescriptreact", "javascript", "javascriptreact" }, filetype) then
+					local ts_api = require("typescript-tools.api")
+					ts_api.add_missing_imports(true)
+					ts_api.fix_all(true)
+					ts_api.organize_imports(true)
+					vim.notify("typescript-tools fixing all", "info")
 				end
 			end,
 		})

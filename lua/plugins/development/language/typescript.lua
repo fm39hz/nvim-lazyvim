@@ -38,30 +38,19 @@ return {
 	},
 	{
 		"pmizio/typescript-tools.nvim",
-		ft = {
-			"javascript",
-			"javascriptreact",
-			"javascript.jsx",
-			"typescript",
-			"typescriptreact",
-			"typescript.tsx",
-		},
+		event = { "BufReadPre", "BufNewFile", "VimEnter" },
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		opts = {},
-		config = function(_, opts)
-			require("typescript-tools").setup(opts)
-
-			-- Add the autocmd here to ensure plugin is loaded
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				pattern = { "*.js", "*.jsx", "*.ts", "*.tsx" },
-				callback = function()
-					vim.cmd("TSToolsFixAll")
-					vim.cmd("TSToolsOrganizeImports")
-					vim.cmd("TSToolsAddMissingImports")
-					vim.cmd(":w")
-				end,
-				desc = "Run TypeScript tools after save",
-			})
+		cond = function()
+			-- Function to check if package.json exists in project root
+			local function has_package_json()
+				local util = require("lspconfig.util")
+				local root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json")(
+					vim.fn.expand("%:p") ~= "" and vim.fn.expand("%:p") or vim.fn.getcwd()
+				)
+				return root_dir and vim.fn.filereadable(root_dir .. "/package.json") == 1
+			end
+			return has_package_json()
 		end,
+		opts = {},
 	},
 }
