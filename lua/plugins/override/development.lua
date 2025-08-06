@@ -78,20 +78,7 @@ local function find_godot_project()
 		end
 	end
 
-	-- If still not found, ask the user
-	local input_dir = vim.fn.input("Godot project directory: ", current_dir, "dir")
-
-	-- Validate the input path
-	if input_dir ~= "" then
-		local project_file, project_dir = has_project_file(input_dir)
-		if project_file then
-			_G.godot_project_cache[current_dir] = { file_path = project_file, dir_path = project_dir }
-			return project_file, project_dir
-		end
-	end
-
-	Snacks.notifier.notify("No valid Godot project found. Using current directory.", vim.log.levels.WARN)
-	return current_dir .. "/project.godot", current_dir
+	return nil, nil
 end
 
 -- Get important environment variables for Godot
@@ -220,7 +207,8 @@ return {
 						-- Check if Godot config already exists
 						local godot_exists = false
 						for _, config in ipairs(dap.configurations.cs) do
-							if config.name == "Godot: Simple Editor Launch" then
+							local project_file, _ = find_godot_project()
+							if config.name == "Godot: Simple Editor Launch" or not project_file then
 								godot_exists = true
 								break
 							end
@@ -231,10 +219,9 @@ return {
 								type = "coreclr",
 								request = "launch",
 								name = "Godot: Simple Editor Launch",
-								-- No 'program' field needed - it's handled by the adapter
 								cwd = function()
 									local project_file, project_dir = find_godot_project()
-									Snacks.notifier.notify("cwd " .. project_dir, "info")
+									-- Snacks.notifier.notify("cwd " .. project_dir, "info")
 									return project_dir
 								end,
 								env = get_env_vars(),
@@ -245,7 +232,7 @@ return {
 								end,
 							})
 
-							vim.notify("Godot DAP configuration added!", vim.log.levels.INFO)
+							-- vim.notify("Godot DAP configuration added!", vim.log.levels.INFO)
 						end
 					end)
 				end,
