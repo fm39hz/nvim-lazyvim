@@ -149,14 +149,14 @@ return {
 					settings = {
 						EnableEditorConfigSupport = true,
 					},
-					vtsls = {
-						settings = {
-							typescript = {
-								preferences = {
-									includeCompletionsForModuleExports = true,
-									includeCompletionsForImportStatements = true,
-									importModuleSpecifier = "project-relative",
-								},
+				},
+				vtsls = {
+					settings = {
+						typescript = {
+							preferences = {
+								includeCompletionsForModuleExports = true,
+								includeCompletionsForImportStatements = true,
+								importModuleSpecifier = "project-relative",
 							},
 						},
 					},
