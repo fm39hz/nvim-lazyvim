@@ -6,4 +6,17 @@ return {
       require("telescope").load_extension("import")
     end,
   },
+  {
+    "rachartier/tiny-code-action.nvim",
+    dependencies = {
+      {
+        "folke/snacks.nvim",
+        opts = {
+          terminal = {},
+        },
+      },
+    },
+    event = "LspAttach",
+    opts = {},
+  },
 }

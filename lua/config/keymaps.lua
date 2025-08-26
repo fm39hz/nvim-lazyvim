@@ -51,6 +51,9 @@ map("n", "<F6>", "<CMD>CompilerOpen<CR>", { desc = "Open compiler" })
 map("n", "<S-F6>", "<CMD>CompilerRedo<CR>", { desc = "Compiler redo" })
 map("n", "<S-F7>", "<CMD>CompilerToggleResults<CR>", { desc = "Compiler results" })
 map("n", "<leader>ci", "<CMD>Telescope import<CR>", { desc = "Import modules" })
+map({ "n", "x" }, "<leader>ca", function()
+	require("tiny-code-action").code_action()
+end, { noremap = true, silent = true })
 
 -- AI
 map("n", "<leader>mcp", "<cmd>ClaudeCode<CR>", { desc = "Toggle Claude Code Panel" })
