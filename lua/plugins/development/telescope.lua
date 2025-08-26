@@ -11,9 +11,6 @@ return {
     dependencies = {
       {
         "folke/snacks.nvim",
-        opts = {
-          terminal = {},
-        },
       },
     },
     event = "LspAttach",
