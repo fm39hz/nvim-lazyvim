@@ -31,7 +31,6 @@
   "im-select.nvim": { "branch": "master", "commit": "113a6905a1c95d2990269f96abcbad9718209557" },
   "import-cost.nvim": { "branch": "main", "commit": "332b9870c7b22dcfb297a0be7d7a87c148181694" },
   "inc-rename.nvim": { "branch": "main", "commit": "8ae25b35ae16ca4bd5de3d3c472eec3b574018d4" },
-  "indent-o-matic": { "branch": "master", "commit": "4d11e98f523d3c4500b1dc33f0d1a248a4f69719" },
   "instant.nvim": { "branch": "master", "commit": "294b6d08143b3db8f9db7f606829270149e1a786" },
   "json-to-types.nvim": { "branch": "main", "commit": "e8dcc6ac710c59fcac354255a835f72916171ba8" },
   "kulala.nvim": { "branch": "main", "commit": "1695bdfc87e2af737bec034cd4cd2d11098a22fd" },
