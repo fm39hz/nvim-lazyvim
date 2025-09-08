@@ -184,6 +184,15 @@ return {
 				callback = function()
 					vim.schedule(function()
 						local dap = require("dap")
+						-- Check if Godot config already exists
+						local godot_exists = false
+						for _, config in ipairs(dap.configurations.cs) do
+							local project_file, _ = find_godot_project()
+							if config.name == "Godot: Simple Editor Launch" or not project_file then
+								godot_exists = true
+								break
+							end
+						end
 
 						-- Path to your Godot executable
 						local godot_executable = os.getenv("GODOT") or "/home/fm39hz/.config/godotenv/godot/bin/godot"
@@ -194,7 +203,7 @@ return {
 							command = vim.fn.exepath("netcoredbg") or "/home/fm39hz/.local/share/nvim/mason/bin/netcoredbg",
 							args = {
 								"--interpreter=vscode",
-								"--",     -- This separator is crucial
+								"--", -- This separator is crucial
 								godot_executable, -- This tells netcoredbg to launch Godot
 							},
 						}
@@ -202,16 +211,6 @@ return {
 						-- Force add the configuration
 						if not dap.configurations.cs then
 							dap.configurations.cs = {}
-						end
-
-						-- Check if Godot config already exists
-						local godot_exists = false
-						for _, config in ipairs(dap.configurations.cs) do
-							local project_file, _ = find_godot_project()
-							if config.name == "Godot: Simple Editor Launch" or not project_file then
-								godot_exists = true
-								break
-							end
 						end
 
 						if not godot_exists then
@@ -247,17 +246,17 @@ return {
 			layouts = {
 				{
 					elements = {
-						{ id = "watches",     size = 0.24 },
-						{ id = "scopes",      size = 0.24 },
+						{ id = "watches", size = 0.24 },
+						{ id = "scopes", size = 0.24 },
 						{ id = "breakpoints", size = 0.24 },
-						{ id = "stacks",      size = 0.28 },
+						{ id = "stacks", size = 0.28 },
 					},
 					size = 0.23,
 					position = "right",
 				},
 				{
 					elements = {
-						{ id = "repl",    size = 0.55 },
+						{ id = "repl", size = 0.55 },
 						{ id = "console", size = 0.45 },
 					},
 					size = 0.27,
