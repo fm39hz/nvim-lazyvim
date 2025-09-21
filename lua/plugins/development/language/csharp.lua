@@ -12,7 +12,6 @@ return {
       },
     },
     dependencies = {
-      "williamboman/mason.nvim",
       "mfussenegger/nvim-dap",
       "Tastyep/structlog.nvim",
     },
