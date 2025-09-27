@@ -14,11 +14,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 				local filetype = vim.bo[args.buf].filetype
 
-				-- C# specific actions
-				if filetype == "cs" then
-					require("csharp").fix_usings()
-				end
-
 				-- TypeScript specific actions
 				if vim.tbl_contains({ "typescript", "typescriptreact", "javascript", "javascriptreact" }, filetype) then
 					local ts_api = require("typescript-tools.api")
