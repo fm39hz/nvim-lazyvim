@@ -94,7 +94,7 @@
   "refactoring.nvim": { "branch": "master", "commit": "74b608dfee827c2372250519d433cc21cb083407" },
   "render-markdown.nvim": { "branch": "main", "commit": "9ab9dade85d8c7d411cc89b592028da3d1b7955a" },
   "rustaceanvim": { "branch": "master", "commit": "8947b1f941f63cb3d618ebe04e07278bf00714df" },
-  "snacks.nvim": { "branch": "main", "commit": "f6c06415a27bd63b038e0c624b11d272c300390f" },
+  "snacks.nvim": { "branch": "main", "commit": "5e0e8698526f350f1280ad1ef7a8670f857c9445" },
   "spellwarn.nvim": { "branch": "main", "commit": "47ada88a843f52f7aa90c018cc7ef514587bc3fd" },
   "structlog.nvim": { "branch": "main", "commit": "45b26a2b1036bb93c0e83f4225e85ab3cee8f476" },
   "telescope-git-submodules.nvim": { "branch": "main", "commit": "e9bbf8b9451dcd7911e0c1bf3ab0f61bb33e0a59" },
