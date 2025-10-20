@@ -54,6 +54,7 @@
   "neogen": { "branch": "main", "commit": "d7f9461727751fb07f82011051338a9aba07581d" },
   "neotest": { "branch": "master", "commit": "7166dc36af2760a76479e021e0521e23f62165f1" },
   "neotest-python": { "branch": "master", "commit": "b0d3a861bd85689d8ed73f0590c47963a7eb1bf9" },
+  "neotest-vstest": { "branch": "main", "commit": "8701cbee23b30fbce0de97d9f455a8b0eecceee7" },
   "nerdy.nvim": { "branch": "main", "commit": "f6ba335405d3070f90aea5e35eca4a08dec3851f" },
   "netman.nvim": { "branch": "main", "commit": "55ac68f236cbecaa84bacea719a453ded9c506ee" },
   "noice.nvim": { "branch": "main", "commit": "db248375c12c5322fbb9b505c1dc6f08e4527684" },
