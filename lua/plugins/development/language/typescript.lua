@@ -1,4 +1,23 @@
 return {
+	-- LSP configuration for TypeScript/JavaScript (vtsls)
+	{
+		"neovim/nvim-lspconfig",
+		opts = {
+			servers = {
+				vtsls = {
+					settings = {
+						typescript = {
+							preferences = {
+								includeCompletionsForModuleExports = true,
+								includeCompletionsForImportStatements = true,
+								importModuleSpecifier = "project-relative",
+							},
+						},
+					},
+				},
+			},
+		},
+	},
 	{
 		"dmmulroy/tsc.nvim",
 		cmd = "TSC",
