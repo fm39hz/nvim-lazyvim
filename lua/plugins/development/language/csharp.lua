@@ -68,10 +68,12 @@ return {
 
 	-- 2. Roslyn LSP
 	{
-		"seblj/roslyn.nvim",
+		"seblyng/roslyn.nvim",
 		ft = "cs",
-		opts = {},
 		dependencies = { "mason-org/mason.nvim" },
+		---@module 'roslyn.config'
+		---@type RoslynNvimConfig
+		opts = {},
 	},
 
 	-- 3. Formatter
@@ -83,7 +85,7 @@ return {
 		},
 	},
 
-	-- 4. Debugger (DAP)
+	-- 4. Debugger (DAP) - Logic Godot Adapter
 	{
 		"mfussenegger/nvim-dap",
 		opts = function()
@@ -91,50 +93,32 @@ return {
 			local godot_executable = os.getenv("GODOT") or "godot"
 			local netcoredbg_path = vim.fn.exepath("netcoredbg")
 
-			-- ADAPTER A: "coreclr" (Standard)
-			-- Used for standard .NET debugging (e.g., backend services)
 			dap.adapters.coreclr = {
 				type = "executable",
 				command = netcoredbg_path,
 				args = { "--interpreter=vscode" },
 			}
 
-			-- ADAPTER B: "godot" (Custom Wrapper)
-			-- Used for debugging Godot projects
-			-- Logic: netcoredbg runs Godot as a child process to capture its output
 			dap.adapters.godot = function(cb, config)
 				local _, project_dir = find_godot_project()
 				project_dir = project_dir or vim.fn.getcwd()
-
 				cb({
 					type = "executable",
 					command = netcoredbg_path,
-					-- Invoke Godot with the project path and verbose flag
-					args = {
-						"--interpreter=vscode",
-						"--",
-						godot_executable,
-						"--path",
-						project_dir,
-						"--verbose",
-					},
+					args = { "--interpreter=vscode", "--", godot_executable, "--path", project_dir, "--verbose" },
 				})
 			end
 
-			-- CONFIGURATIONS
 			dap.configurations.cs = {
-				-- CONFIG 1: Godot (Use adapter 'godot')
 				{
-					type = "godot", -- Points to adapter B
+					type = "godot",
 					name = "Godot: Launch Game",
-					request = "launch", -- Use LAUNCH to let netcoredbg capture output
-					program = "", -- Leave empty because the adapter handles the path
+					request = "launch",
+					program = "",
 					cwd = "${workspaceFolder}",
 				},
-
-				-- CONFIG 2: Backend Grimoire (Use adapter 'coreclr')
 				{
-					type = "coreclr", -- Points to adapter A
+					type = "coreclr",
 					name = "NetCore: Launch DLL",
 					request = "launch",
 					program = function()
@@ -142,8 +126,6 @@ return {
 					end,
 					cwd = "${workspaceFolder}",
 				},
-
-				-- CONFIG 3: Attach (Fallback)
 				{
 					type = "coreclr",
 					name = "Attach (Pick Process)",
@@ -154,12 +136,17 @@ return {
 		end,
 	},
 
-	-- 5. Mason Tools
+	-- 5. Mason Tools (Must install roslyn)
 	{
 		"mason-org/mason.nvim",
 		opts = function(_, opts)
+			opts.registries = {
+				"github:mason-org/mason-registry",
+				"github:Crashdummyy/mason-registry",
+			}
 			opts.ensure_installed = opts.ensure_installed or {}
-			vim.list_extend(opts.ensure_installed, { "netcoredbg", "csharpier" })
+			-- Chỉ cài những thứ cần thiết
+			vim.list_extend(opts.ensure_installed, { "netcoredbg", "csharpier", "roslyn" })
 		end,
 	},
 }
