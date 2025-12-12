@@ -74,9 +74,10 @@ return {
 
 	-- 6. Godot Tools
 	{
+		-- dir = "/home/fm39hz/Workspace/Personal/Rice/nvim-dap-godot-mono",
+		-- name = "dap-godot-mono",
 		"fm39hz/nvim-dap-godot-mono",
 		dependencies = {
-			"mfussenegger/nvim-dap",
 			"stevearc/overseer.nvim",
 		},
 		ft = "cs",
