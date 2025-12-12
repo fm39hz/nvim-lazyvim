@@ -61,6 +61,7 @@
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
   "nvim-ctx-ingest": { "branch": "main", "commit": "4c4869b27210796db83bc228377facac467fd23b" },
   "nvim-dap": { "branch": "master", "commit": "5860c7c501eb428d3137ee22c522828d20cca0b3" },
+  "nvim-dap-godot-mono": { "branch": "master", "commit": "f9eefe4fc1dac85c8e1e3195126a6743316a4cf4" },
   "nvim-dap-python": { "branch": "master", "commit": "64652d1ae1db80870d9aac7132d76e37acd86a26" },
   "nvim-dap-ui": { "branch": "master", "commit": "cf91d5e2d07c72903d052f5207511bf7ecdb7122" },
   "nvim-dap-virtual-text": { "branch": "master", "commit": "fbdb48c2ed45f4a8293d0d483f7730d24467ccb6" },
