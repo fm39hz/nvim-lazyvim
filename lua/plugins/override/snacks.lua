@@ -77,5 +77,21 @@ return {
         interactive = true,
       },
     },
+    keys = {
+      {
+        "<C-/>",
+        function()
+          Snacks.terminal.toggle()
+        end,
+        desc = "Toggle Terminal",
+      },
+      {
+        "<C-_>",
+        function()
+          Snacks.terminal.toggle()
+        end,
+        desc = "Toggle Terminal",
+      },
+    },
   },
 }

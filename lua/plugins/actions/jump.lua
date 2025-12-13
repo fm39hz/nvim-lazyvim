@@ -1,10 +1,12 @@
 return {
   {
     "tris203/precognition.nvim",
-    cmd = "Precognition toggle",
     opts = {
       startVisible = true,
       showBlankVirtLine = false,
+    },
+    keys = {
+      { "<leader>uP", "<cmd>Precognition toggle<cr>", desc = "Toggle Precognition" },
     },
   },
   {
