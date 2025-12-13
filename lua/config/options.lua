@@ -6,6 +6,9 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.spelllang = {}
 vim.opt.scrolloff = 1000
+-- Tắt netrw để tránh xung đột và load chậm
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- fold config
 vim.opt.foldlevel = 99
@@ -16,6 +19,3 @@ vim.opt.shell = "fish"
 vim.opt.shellcmdflag = "-c"
 vim.opt.shellquote = ""
 vim.opt.shellxquote = ""
-
--- lsp config
-vim.lsp.set_log_level("off")

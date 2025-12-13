@@ -1,7 +1,7 @@
 return {
   {
     "brenoprata10/nvim-highlight-colors",
-    event = "BufReadPre",
+    event = "BufReadPost",
     opts = {
       render = "virtual",
       virtual_symbol = "",
@@ -10,6 +10,6 @@ return {
   },
   {
     "HiPhish/rainbow-delimiters.nvim",
-    event = "BufReadPre",
+    event = "BufReadPost",
   },
 }
