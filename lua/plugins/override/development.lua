@@ -18,35 +18,79 @@ return {
   },
 
   {
+    "mfussenegger/nvim-dap",
+    -- Thêm keymap vào đây
+    keys = {
+      {
+        "K",
+        function()
+          local dap = require("dap")
+          if dap.session() then
+            require("dap.ui.widgets").hover()
+          else
+            vim.lsp.buf.hover()
+          end
+        end,
+        desc = "Smart Hover (DAP/LSP)",
+        mode = { "n", "v" },
+      },
+    },
+  },
+
+  {
     "rcarriga/nvim-dap-ui",
+    keys = {
+      -- Dap Scope
+      {
+        "<leader>dS",
+        function()
+          local widgets = require("dap.ui.widgets")
+          widgets.centered_float(widgets.scopes)
+        end,
+        desc = "Floating Scopes",
+      },
+
+      -- Dap Console
+      {
+        "<leader>dC",
+        function()
+          require("dapui").float_element("console", { enter = true })
+        end,
+        desc = "Floating Console",
+      },
+    },
+
     opts = {
-      expand_lines = true,
-      icons = { expanded = "", collapsed = "", circular = "" },
+      controls = { enabled = false },
+      icons = { expanded = "▾", collapsed = "▸", circular = "" },
+      floating = {
+        border = "rounded",
+        mappings = { close = { "q", "<Esc>" } },
+      },
       layouts = {
         {
           elements = {
-            { id = "watches",     size = 0.24 },
-            { id = "scopes",      size = 0.24 },
-            { id = "breakpoints", size = 0.24 },
-            { id = "stacks",      size = 0.28 },
+            { id = "scopes", size = 0.60 },
+            { id = "stacks", size = 0.40 },
           },
-          size = 0.23,
-          position = "right",
+          size = 35,
+          position = "left",
         },
         {
           elements = {
-            { id = "repl",    size = 0.55 },
-            { id = "console", size = 0.45 },
+            { id = "repl",    size = 0.5 },
+            { id = "console", size = 0.5 },
           },
-          size = 0.27,
+          size = 10,
           position = "bottom",
         },
       },
-      floating = {
-        max_height = 0.9,
-        max_width = 0.5,
-        border = "rounded",
-      },
     },
+
+    config = function(_, opts)
+      local dap = require("dap")
+      local dapui = require("dapui")
+      dapui.setup(opts)
+    end,
   },
 }
