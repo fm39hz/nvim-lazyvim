@@ -46,7 +46,7 @@ require("lazy").setup({
   ui = {
     border = "rounded",
   },
-  install = { colorscheme = { "everforest" } },
+  install = { colorscheme = { "ex-everforest" } },
   checker = {
     enabled = false, -- check for plugin updates periodically
     notify = false, -- notify on update
