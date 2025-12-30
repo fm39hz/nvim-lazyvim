@@ -1,7 +1,7 @@
 return {
-	{
-		"chrisgrieser/nvim-origami",
-		event = "LspAttach",
-		opts = {},
-	},
+  {
+    "chrisgrieser/nvim-origami",
+    event = "BufReadPost",
+    opts = {},
+  },
 }

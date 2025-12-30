@@ -2,13 +2,10 @@ return {
   {
     "Saghen/blink.cmp",
     opts = {
-      -- keymap = {
-      -- 	preset = "super-tab",
-      -- },
       signature = { window = { border = "rounded" } },
       completion = {
         menu = { border = "rounded" },
-        documentation = { window = { border = "rounded" } },
+        documentation = { window = { border = "rounded" }, auto_show_delay_ms = 500 },
         trigger = {
           show_in_snippet = false,
           show_on_insert_on_trigger_character = false,
@@ -16,10 +13,12 @@ return {
       },
     },
   },
-
+  {
+    "ThePrimeagen/refactoring.nvim",
+    event = {},
+  },
   {
     "mfussenegger/nvim-dap",
-    -- Thêm keymap vào đây
     keys = {
       {
         "K",
@@ -39,18 +38,30 @@ return {
 
   {
     "rcarriga/nvim-dap-ui",
+    -- 1. Giữ keymap để Lazy-load
     keys = {
-      -- Dap Scope
+      {
+        "<leader>du",
+        function()
+          require("dapui").toggle({})
+        end,
+        desc = "Dap UI",
+      },
+      {
+        "<leader>de",
+        function()
+          require("dapui").eval()
+        end,
+        desc = "Eval",
+        mode = { "n", "x" },
+      },
       {
         "<leader>dS",
         function()
-          local widgets = require("dap.ui.widgets")
-          widgets.centered_float(widgets.scopes)
+          require("dap.ui.widgets").centered_float(require("dap.ui.widgets").scopes)
         end,
         desc = "Floating Scopes",
       },
-
-      -- Dap Console
       {
         "<leader>dC",
         function()
@@ -59,7 +70,6 @@ return {
         desc = "Floating Console",
       },
     },
-
     opts = {
       controls = { enabled = false },
       icons = { expanded = "▾", collapsed = "▸", circular = "" },
@@ -86,11 +96,22 @@ return {
         },
       },
     },
-
+    -- 2. Override hoàn toàn hàm config của LazyVim để CHẶN tự động mở UI
     config = function(_, opts)
-      local dap = require("dap")
       local dapui = require("dapui")
       dapui.setup(opts)
+
+      -- Ở đây chúng ta KHÔNG định nghĩa dap.listeners.after.event_initialized
+      -- Điều này chặn việc tự động nhảy UI ra khi bạn bắt đầu debug file C#
+
+      -- Nếu bạn muốn tự động ĐÓNG khi kết thúc (nhưng không tự mở), hãy dùng:
+      local dap = require("dap")
+      dap.listeners.before.event_terminated["dapui_config"] = function()
+        dapui.close({})
+      end
+      dap.listeners.before.event_exited["dapui_config"] = function()
+        dapui.close({})
+      end
     end,
   },
 }

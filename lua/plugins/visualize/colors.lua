@@ -1,15 +1,15 @@
 return {
-  {
-    "brenoprata10/nvim-highlight-colors",
-    event = "BufReadPost",
-    opts = {
-      render = "virtual",
-      virtual_symbol = "",
-      enable_tailwind = true,
-    },
-  },
-  {
-    "HiPhish/rainbow-delimiters.nvim",
-    event = "BufReadPost",
-  },
+	{
+		"brenoprata10/nvim-highlight-colors",
+		event = "BufReadPost",
+		opts = {
+			render = "virtual",
+			virtual_symbol = "",
+			enable_tailwind = true,
+		},
+	},
+	{
+		"HiPhish/rainbow-delimiters.nvim",
+		event = "BufReadPost",
+	},
 }

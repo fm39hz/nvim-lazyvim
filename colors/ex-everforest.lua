@@ -90,7 +90,7 @@ vim.api.nvim_set_hl(0, "Blue", { fg = 8371123 })
 vim.api.nvim_set_hl(0, "BlueItalic", { cterm = { italic = true }, fg = 8371123, italic = true })
 vim.api.nvim_set_hl(0, "BlueSign", { fg = 8371123 })
 vim.api.nvim_set_hl(0, "Boolean", { fg = 14064054 })
-vim.api.nvim_set_hl(0, "Changed", { link = "Yellow" })
+vim.api.nvim_set_hl(0, "Changed", { link = "Blue" })
 vim.api.nvim_set_hl(0, "Character", { fg = 10993792 })
 vim.api.nvim_set_hl(0, "ColorColumn", { bg = 3424068 })
 vim.api.nvim_set_hl(0, "Comment", { cterm = { italic = true }, fg = 8753801, italic = true })
@@ -105,41 +105,55 @@ vim.api.nvim_set_hl(0, "CursorLineNr", { fg = 10332576 })
 vim.api.nvim_set_hl(0, "Debug", { fg = 15112309 })
 vim.api.nvim_set_hl(0, "Define", { cterm = { italic = true }, fg = 14064054, italic = true })
 vim.api.nvim_set_hl(0, "Delimiter", { fg = 13878954 })
+vim.api.nvim_set_hl(
+	0,
+	"DiagnosticDeprecated",
+	{ cterm = { strikethrough = true }, sp = 13878954, strikethrough = true }
+)
 vim.api.nvim_set_hl(0, "DiagnosticError", { bg = 5324869, fg = 15105664 })
 vim.api.nvim_set_hl(0, "DiagnosticFloatingError", { link = "ErrorFloat" })
 vim.api.nvim_set_hl(0, "DiagnosticFloatingHint", { link = "HintFloat" })
 vim.api.nvim_set_hl(0, "DiagnosticFloatingInfo", { link = "InfoFloat" })
+vim.api.nvim_set_hl(0, "DiagnosticFloatingOk", { link = "OkFloat" })
 vim.api.nvim_set_hl(0, "DiagnosticFloatingWarn", { link = "WarningFloat" })
-vim.api.nvim_set_hl(0, "DiagnosticHint", { bg = 4345927, fg = 10993792 })
+vim.api.nvim_set_hl(0, "DiagnosticHint", { bg = 4867150, fg = 14064054 })
 vim.api.nvim_set_hl(0, "DiagnosticInfo", { bg = 3821917, fg = 8371123 })
+vim.api.nvim_set_hl(0, "DiagnosticOk", { bg = 4345927, fg = 10993792 })
 vim.api.nvim_set_hl(0, "DiagnosticSignError", { link = "RedSign" })
-vim.api.nvim_set_hl(0, "DiagnosticSignHint", { link = "GreenSign" })
+vim.api.nvim_set_hl(0, "DiagnosticSignHint", { link = "PurpleSign" })
 vim.api.nvim_set_hl(0, "DiagnosticSignInfo", { link = "BlueSign" })
+vim.api.nvim_set_hl(0, "DiagnosticSignOk", { link = "GreenSign" })
 vim.api.nvim_set_hl(0, "DiagnosticSignWarn", { link = "YellowSign" })
 vim.api.nvim_set_hl(
-  0,
-  "DiagnosticUnderlineError",
-  { bg = 5324869, cterm = { undercurl = true }, fg = 15105664, sp = 15105664, undercurl = true }
+	0,
+	"DiagnosticUnderlineError",
+	{ bg = 5324869, cterm = { undercurl = true }, fg = 15105664, sp = 15105664, undercurl = true }
 )
 vim.api.nvim_set_hl(
-  0,
-  "DiagnosticUnderlineHint",
-  { bg = 4345927, cterm = { undercurl = true }, fg = 10993792, sp = 10993792, undercurl = true }
+	0,
+	"DiagnosticUnderlineHint",
+	{ bg = 4867150, cterm = { undercurl = true }, fg = 14064054, sp = 14064054, undercurl = true }
 )
 vim.api.nvim_set_hl(
-  0,
-  "DiagnosticUnderlineInfo",
-  { bg = 3821917, cterm = { undercurl = true }, fg = 8371123, sp = 8371123, undercurl = true }
+	0,
+	"DiagnosticUnderlineInfo",
+	{ bg = 3821917, cterm = { undercurl = true }, fg = 8371123, sp = 8371123, undercurl = true }
 )
 vim.api.nvim_set_hl(
-  0,
-  "DiagnosticUnderlineWarn",
-  { bg = 5065795, cterm = { undercurl = true }, fg = 14400639, sp = 14400639, undercurl = true }
+	0,
+	"DiagnosticUnderlineOk",
+	{ bg = 4345927, cterm = { undercurl = true }, sp = 10993792, undercurl = true }
+)
+vim.api.nvim_set_hl(
+	0,
+	"DiagnosticUnderlineWarn",
+	{ bg = 5065795, cterm = { undercurl = true }, fg = 14400639, sp = 14400639, undercurl = true }
 )
 vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { fg = 8753801 })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { link = "VirtualTextError" })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { link = "VirtualTextHint" })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { link = "VirtualTextInfo" })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextOk", { link = "VirtualTextOk" })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { link = "VirtualTextWarning" })
 vim.api.nvim_set_hl(0, "DiagnosticWarn", { bg = 5065795, fg = 14400639 })
 vim.api.nvim_set_hl(0, "DiffAdd", { bg = 4345927 })
@@ -150,14 +164,14 @@ vim.api.nvim_set_hl(0, "Directory", { fg = 10993792 })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = 5199966 })
 vim.api.nvim_set_hl(0, "Error", { fg = 15105664 })
 vim.api.nvim_set_hl(
-  0,
-  "ErrorMsg",
-  { bold = true, cterm = { bold = true, underline = true }, fg = 15105664, underline = true }
+	0,
+	"ErrorMsg",
+	{ bold = true, cterm = { bold = true, underline = true }, fg = 15105664, underline = true }
 )
 vim.api.nvim_set_hl(0, "Exception", { cterm = { italic = true }, fg = 15105664, italic = true })
 vim.api.nvim_set_hl(0, "Fg", { fg = 13878954 })
 vim.api.nvim_set_hl(0, "Float", { fg = 14064054 })
-vim.api.nvim_set_hl(0, "FloatBorder", { bg = 2962747, fg = 8753801 })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = 4016205, fg = 8753801 })
 vim.api.nvim_set_hl(0, "FloatTitle", { bg = 4016205, bold = true, cterm = { bold = true }, fg = 8753801 })
 vim.api.nvim_set_hl(0, "FoldColumn", { fg = 5661535 })
 vim.api.nvim_set_hl(0, "Folded", { bg = 3424068, fg = 8753801 })
@@ -249,14 +263,11 @@ vim.api.nvim_set_hl(0, "WinSeparator", { fg = 5199966 })
 vim.api.nvim_set_hl(0, "Yellow", { fg = 14400639 })
 vim.api.nvim_set_hl(0, "YellowItalic", { cterm = { italic = true }, fg = 14400639, italic = true })
 vim.api.nvim_set_hl(0, "YellowSign", { fg = 14400639 })
-vim.api.nvim_set_hl(0, "diffAdded", { link = "Green" })
-vim.api.nvim_set_hl(0, "diffChanged", { link = "Blue" })
 vim.api.nvim_set_hl(0, "diffFile", { link = "Aqua" })
 vim.api.nvim_set_hl(0, "diffIndexLine", { link = "Purple" })
 vim.api.nvim_set_hl(0, "diffLine", { link = "Grey" })
 vim.api.nvim_set_hl(0, "diffNewFile", { link = "Orange" })
 vim.api.nvim_set_hl(0, "diffOldFile", { link = "Yellow" })
-vim.api.nvim_set_hl(0, "diffRemoved", { link = "Red" })
 vim.api.nvim_set_hl(0, "htmlH1", { bold = true, cterm = { bold = true }, fg = 15105664 })
 vim.api.nvim_set_hl(0, "htmlH2", { bold = true, cterm = { bold = true }, fg = 15112309 })
 vim.api.nvim_set_hl(0, "htmlH3", { bold = true, cterm = { bold = true }, fg = 14400639 })

@@ -15,7 +15,6 @@ vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 
 -- shell
-vim.opt.shell = "fish"
 vim.opt.shellcmdflag = "-c"
 vim.opt.shellquote = ""
 vim.opt.shellxquote = ""
