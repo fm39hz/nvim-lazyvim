@@ -40,11 +40,6 @@ return {
 		build = "sh install.sh bun",
 	},
 	{
-		"barrett-ruth/import-cost.nvim",
-		build = "sh install.sh bun",
-		ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-	},
-	{
 		"dmmulroy/ts-error-translator.nvim",
 		ft = { "typescript", "typescriptreact" },
 	},
