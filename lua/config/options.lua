@@ -5,7 +5,6 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.spelllang = {}
-vim.opt.scrolloff = 1000
 -- Tắt netrw để tránh xung đột và load chậm
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
