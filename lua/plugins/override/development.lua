@@ -24,7 +24,85 @@ return {
 	},
 	{
 		"ThePrimeagen/refactoring.nvim",
-		event = {},
+		dependencies = {
+			"lewis6991/async.nvim",
+		},
+		keys = {
+			{
+				"<leader>rs",
+				function()
+					require("refactoring").select_refactor()
+				end,
+				mode = { "n", "x" },
+				desc = "Select Refactor",
+			},
+
+			{
+				"<leader>re",
+				function()
+					require("refactoring").extract_func()
+				end,
+				mode = "x",
+				desc = "Extract Function",
+			},
+			{
+				"<leader>rf",
+				function()
+					require("refactoring").extract_func_to_file()
+				end,
+				mode = "x",
+				desc = "Extract Function to File",
+			},
+			{
+				"<leader>rv",
+				function()
+					require("refactoring").extract_var()
+				end,
+				mode = "x",
+				desc = "Extract Variable",
+			},
+			{
+				"<leader>ri",
+				function()
+					require("refactoring").inline_var()
+				end,
+				mode = { "n", "x" },
+				desc = "Inline Variable",
+			},
+			{
+				"<leader>rI",
+				function()
+					require("refactoring").inline_func()
+				end,
+				mode = "n",
+				desc = "Inline Function",
+			},
+
+			{
+				"<leader>pv",
+				function()
+					require("refactoring").debug.print_var()
+				end,
+				mode = { "n", "x" },
+				desc = "Debug Print Var",
+			},
+			{
+				"<leader>pp",
+				function()
+					require("refactoring").debug.print_loc()
+				end,
+				mode = "n",
+				desc = "Debug Print Location",
+			},
+			{
+				"<leader>pc",
+				function()
+					require("refactoring").debug.cleanup({})
+				end,
+				mode = "n",
+				desc = "Debug Cleanup",
+			},
+		},
 	},
 	{
 		"mfussenegger/nvim-dap",
