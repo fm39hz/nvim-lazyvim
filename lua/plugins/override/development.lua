@@ -1,5 +1,16 @@
 return {
 	{
+		"mfussenegger/nvim-lint",
+		optional = true,
+		opts = {
+			linters = {
+				["markdownlint-cli2"] = {
+					args = { "--config", "~/.config/nvim/.markdownlint-cli2.yaml", "--" },
+				},
+			},
+		},
+	},
+	{
 		"Saghen/blink.cmp",
 		opts = {
 			signature = { window = { border = "rounded" } },
