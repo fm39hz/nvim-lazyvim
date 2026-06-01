@@ -180,3 +180,117 @@ vim.api.nvim_create_autocmd({ "VimEnter", "VimLeave" }, {
 		end
 	end,
 })
+
+-- 4. Context-aware preloading: tải plugin sau startup để giảm delay khi trigger
+-- Tier-1: UI vừa render → load plugin user gần như chắc chắn sẽ dùng ngay
+vim.api.nvim_create_autocmd("UIEnter", {
+	once = true,
+	desc = "Preload tier-1 plugins after first paint",
+	callback = function()
+		vim.schedule(function()
+			require("lazy").load({
+				plugins = {
+					"gitsigns.nvim",
+					"blink.cmp",
+					"noice.nvim",
+					"bufferline.nvim",
+					"neo-tree.nvim",
+					"nvim-lint",
+				},
+			})
+		end)
+	end,
+})
+
+-- Tier-2: user đang đọc code (CPU idle) → load plugin có khả năng dùng cao
+vim.api.nvim_create_autocmd("CursorHold", {
+	once = true,
+	desc = "Preload tier-2 plugins while user is idle",
+	callback = function()
+		require("lazy").load({
+			plugins = {
+				"sidekick.nvim",
+				"CopilotChat.nvim",
+				"refactoring.nvim",
+				"nvim-dap",
+				"nvim-dap-ui",
+				"structlog.nvim",
+				"compiler.nvim",
+				"overseer.nvim",
+				"yanky.nvim",
+				"nvim-highlight-colors",
+				"rainbow-delimiters.nvim",
+				"nvim-origami",
+				"nvim-lsp-file-operations",
+			},
+		})
+	end,
+})
+
+-- Filetype context: mở file gì → preload plugin liên quan đến filetype đó
+vim.api.nvim_create_autocmd("BufReadPre", {
+	pattern = "*.md",
+	desc = "Preload markdown plugins",
+	callback = function()
+		require("lazy").load({
+			plugins = {
+				"obsidian.nvim",
+				"otter.nvim",
+				"toggle-checkbox.nvim",
+				"tiny-code-action.nvim",
+				"spellwarn.nvim",
+				"gitpad.nvim",
+			},
+		})
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufReadPre", {
+	pattern = { "*.ts", "*.tsx", "*.js", "*.jsx" },
+	desc = "Preload TypeScript plugins",
+	callback = function()
+		require("lazy").load({ plugins = {
+			"ts-error-translator.nvim",
+			"tsc.nvim",
+			"json-to-types.nvim",
+		} })
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufReadPre", {
+	pattern = { "*.cs" },
+	desc = "Preload C# plugins",
+	callback = function()
+		require("lazy").load({ plugins = {
+			"roslyn.nvim",
+			"nvim-dap-godot-mono",
+		} })
+	end,
+})
+
+-- Project context: detect project type → preload toolchain
+vim.api.nvim_create_autocmd("VimEnter", {
+	once = true,
+	desc = "Preload project-specific plugins",
+	callback = function()
+		local cwd = vim.fn.getcwd()
+		local has_csproj = vim.fn.filereadable(cwd .. "/.csproj") == 1 or vim.fn.glob(cwd .. "/*.csproj") ~= ""
+		local has_sln = vim.fn.glob(cwd .. "/*.sln") ~= ""
+		local has_package_json = vim.fn.filereadable(cwd .. "/package.json") == 1
+
+		if has_csproj or has_sln then
+			require("lazy").load({ plugins = {
+				"compiler.nvim",
+				"overseer.nvim",
+				"roslyn.nvim",
+			} })
+		end
+
+		if has_package_json then
+			require("lazy").load({ plugins = {
+				"tsc.nvim",
+				"json-to-types.nvim",
+			} })
+		end
+	end,
+})
