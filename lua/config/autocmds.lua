@@ -210,7 +210,6 @@ vim.api.nvim_create_autocmd("CursorHold", {
 		require("lazy").load({
 			plugins = {
 				"sidekick.nvim",
-				"CopilotChat.nvim",
 				"refactoring.nvim",
 				"nvim-dap",
 				"nvim-dap-ui",
