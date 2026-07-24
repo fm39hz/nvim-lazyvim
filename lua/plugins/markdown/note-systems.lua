@@ -52,8 +52,26 @@ end
 return {
 	{
 		"obsidian-nvim/obsidian.nvim",
-		event = "BufReadPre " .. vim.fn.expand("~") .. "/Workspace/Notes/Obsidian/*/*.md",
 		ft = "markdown",
+		-- only load when file is inside an Obsidian vault (has .obsidian/ ancestor)
+		cond = function()
+			local f = vim.fn.expand("%:p")
+			if f == "" then
+				return false
+			end
+			local dir = vim.fn.fnamemodify(f, ":h")
+			while dir ~= "/" and dir ~= "" do
+				if vim.uv.fs_stat(dir .. "/.obsidian") then
+					return true
+				end
+				local parent = vim.fn.fnamemodify(dir, ":h")
+				if parent == dir then
+					break
+				end
+				dir = parent
+			end
+			return false
+		end,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
@@ -74,14 +92,6 @@ return {
 				template = nil,
 				workdays_only = true,
 			},
-		},
-	},
-	{
-		"jmbuhr/otter.nvim",
-		ft = "markdown",
-		dependencies = {
-			"neovim/nvim-lspconfig",
-			"nvim-treesitter/nvim-treesitter",
 		},
 	},
 	{
